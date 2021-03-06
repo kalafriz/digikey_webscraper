@@ -11,5 +11,8 @@ uClient.close()
 # html parsing
 page_soup = soup(page_html, "html.parser")
 page_soup.body.span
-containers = page_soup.findAll("div", {"class":"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"})
-prod_attr = containers[0]
+
+#product attributes
+prod_attr = page_soup.findAll("div", {"class":"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true"})[0]
+
+prod_num = prod_attr.findAll("tr")[3].findAll("td")[1].div.text
